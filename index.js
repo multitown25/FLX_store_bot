@@ -19,7 +19,13 @@ const setupWebhook = async () => {
 
 app.get('/webhook-customerorder-sobrano?:id&:type', (req, res, next) => {
     console.log(req.body);
-    console.log('WEBHOOK!!!');
+    console.log('WEBHOOK WITH QUERY PARAMS!!!');
+    res.end();
+})
+
+app.get('/webhook-customerorder-sobrano', (req, res, next) => {
+    console.log(req.body);
+    console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
     res.end();
 })
 
