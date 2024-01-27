@@ -31,8 +31,14 @@ const setupWebhook = async () => {
 app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
     try {
         const orderId = req.query.id;
-        const order = await $api.get(`https://api.moysklad.ru/api/remap/1.2/entity/customerorder/${orderId}`).then(res => res.data.rows[0]);
+        const order = await $api.get(`https://api.moysklad.ru/api/remap/1.2/entity/customerorder/${orderId}`).then(res => res.data);
+        
+
+        
+        
         console.log(order);
+
+
 
         console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
         res.end();
@@ -41,6 +47,19 @@ app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
         res.end();
     }
 
+})
+
+app.post(URI, async (req, res) => {
+    console.log(req.body)
+
+    const chatId = req.body.message.chat.id
+    const text = req.body.message.text
+
+    await axios.post(`${TELEGRAM_API}/sendMessage`, {
+        chat_id: chatId,
+        text: text
+    })
+    return res.send()
 })
 
 app.get('/test', async (req, res, next) => {
