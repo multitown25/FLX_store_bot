@@ -55,7 +55,7 @@ app.post(URI, async (req, res) => {
     const chatId = req.body.message.chat.id
     const text = req.body.message.text
 
-    await axios.post(`${TELEGRAM_API}/sendMessage`, {
+    await axios.post(`${TG_API}/sendMessage`, {
         chat_id: chatId,
         text: text
     })
