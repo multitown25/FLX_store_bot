@@ -19,10 +19,13 @@ const setupWebhook = async () => {
 
 app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
     try {
-        const reqBody = req.events;
-        const id = req.params.id;
+        const reqBody = req.body.events;
+        const idFromParams = req.params.id;
+        const idFromQuery = req.query.id;
+
         console.log(reqBody);
-        console.log(id);
+        console.log(idFromParams);
+        console.log(idFromQuery);
         console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
         res.end();
     } catch (error) {
