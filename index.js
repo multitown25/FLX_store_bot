@@ -9,10 +9,17 @@ const PORT = 8010;
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 const setupWebhook = async () => {
     const res = await axios.get(`${TG_API}/setWebhook?url=${WEBHOOK_URL}`);
     console.log(res.data);
 }
+
+app.get('/webhook-customerorder-sobrano', (req, res, next) => {
+    console.log(req.body);
+})
 
 app.listen(PORT, async () => {
     console.log(`Server has been stared ${PORT} PORT`);
