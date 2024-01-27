@@ -17,13 +17,13 @@ const setupWebhook = async () => {
     console.log(res.data);
 }
 
-app.post('/webhook-customerorder-sobrano', (req, res, next) => {
+app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
     console.log(req.body);
     console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
-    res.end();
+    res.end(req);
 })
 
-app.get('/test', (req, res, next) => {
+app.get('/test', async (req, res, next) => {
     console.log('TEST IS PASSED');
     res.end();
 })
