@@ -17,7 +17,7 @@ const setupWebhook = async () => {
     console.log(res.data);
 }
 
-app.get('/webhook-customerorder-sobrano/:id&:type', (req, res, next) => {
+app.get('/webhook-customerorder-sobrano?:id&:type', (req, res, next) => {
     console.log(req.body);
     res.end();
 })
