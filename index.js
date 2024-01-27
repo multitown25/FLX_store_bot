@@ -19,6 +19,12 @@ const setupWebhook = async () => {
 
 app.get('/webhook-customerorder-sobrano/:id&:type', (req, res, next) => {
     console.log(req.body);
+    res.end();
+})
+
+app.get('/test', (req, res, next) => {
+    console.log('TEST IS PASSED');
+    res.end();
 })
 
 app.listen(PORT, async () => {
