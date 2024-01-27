@@ -6,7 +6,7 @@ const MS_TOKEN = 'c74a8a50dd71f2effeeb0760ca923825bffb5d6b'; // Ramazan
 const TG_BOT_TOKEN = '5753507047:AAEIpHf-jF4nM0o0bzuxDycWQLNQXzcwPl8'; // Bender
 const TG_API = `https://api.telegram.org/bot${TG_BOT_TOKEN}`
 const URI = `/webhook/${TG_BOT_TOKEN}`
-const WEBHOOK_URL = `https://6e7e-94-180-255-226.ngrok-free.app${URI}`;
+const WEBHOOK_URL = `https://2bd6-94-180-255-226.ngrok-free.app${URI}`;
 const PORT = 8010;
 
 const $api = axios.create({
