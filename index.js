@@ -19,7 +19,7 @@ const setupWebhook = async () => {
 
 app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
     try {
-        const reqBody = req;
+        const reqBody = req.events;
         const id = req.params.id;
         console.log(reqBody);
         console.log(id);
