@@ -23,7 +23,7 @@ app.get('/webhook-customerorder-sobrano?:id&:type', (req, res, next) => {
     res.end();
 })
 
-app.get('/webhook-customerorder-sobrano', (req, res, next) => {
+app.post('/webhook-customerorder-sobrano', (req, res, next) => {
     console.log(req.body);
     console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
     res.end();
