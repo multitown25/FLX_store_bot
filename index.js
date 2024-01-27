@@ -17,13 +17,13 @@ const setupWebhook = async () => {
     console.log(res.data);
 }
 
-app.get('/webhook-customerorder-sobrano?:id&:type', (req, res, next) => {
+app.get('/webhook-customerorder-sobrano', (req, res, next) => {
     console.log(req.body);
     console.log('WEBHOOK!!!');
     res.end();
 })
 
-app.get('/test?:id&:type', (req, res, next) => {
+app.get('/test', (req, res, next) => {
     console.log('TEST IS PASSED');
     res.end();
 })
