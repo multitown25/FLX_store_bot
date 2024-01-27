@@ -33,6 +33,7 @@ app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
         const orderId = req.query.id;
         const order = await $api.get(`https://api.moysklad.ru/api/remap/1.2/entity/customerorder/${orderId}`).then(res => res.data);
         const manager = order.attributes?.find(item => item.name === "Клиент закреплен");
+        console.log(manager)
         const text = `Заказ ${order.name}\nСамовывоз\nСобран ${order.updated.slice(0, -4)}\nЗакреплен за'${manager.value}'`;        
 
         await axios.post(`${TG_API}/sendMessage`, {
