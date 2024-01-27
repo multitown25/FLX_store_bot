@@ -6,7 +6,7 @@ const MS_TOKEN = 'c74a8a50dd71f2effeeb0760ca923825bffb5d6b'; // Ramazan
 const TG_BOT_TOKEN = '5753507047:AAEIpHf-jF4nM0o0bzuxDycWQLNQXzcwPl8'; // Bender
 const TG_API = `https://api.telegram.org/bot${TG_BOT_TOKEN}`
 const URI = `/webhook/${TG_BOT_TOKEN}`
-const WEBHOOK_URL = `https://2bd6-94-180-255-226.ngrok-free.app${URI}`;
+const WEBHOOK_URL = `https://2bd6-94-180-255-226.ngrok-free.app${URI}`; // screen name is ...
 const PORT = 8010;
 
 const $api = axios.create({
@@ -32,13 +32,15 @@ app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
     try {
         const orderId = req.query.id;
         const order = await $api.get(`https://api.moysklad.ru/api/remap/1.2/entity/customerorder/${orderId}`).then(res => res.data);
-        
+        const manager = order.attributes?.find(item => item.name === "Клиент закреплен");
+        const text = `Заказ ${order.name} (Самовывоз) собран ${order.updated}. Клиент закреплен за '${manager}'`;        
 
+        await axios.post(`${TG_API}/sendMessage`, {
+            chat_id: 482738452, // Ramazan
+            text
+        })
         
-        
-        console.log(order);
-
-
+        // console.log(order);
 
         console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
         res.end();
@@ -49,18 +51,18 @@ app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
 
 })
 
-app.post(URI, async (req, res) => {
-    console.log(req.body)
+// app.post(URI, async (req, res) => {
+//     console.log(req.body)
 
-    const chatId = req.body.message.chat.id
-    const text = req.body.message.text
+//     const chatId = req.body.message.chat.id
+//     const text = req.body.message.text
 
-    await axios.post(`${TG_API}/sendMessage`, {
-        chat_id: chatId,
-        text: text
-    })
-    return res.send()
-})
+//     await axios.post(`${TG_API}/sendMessage`, {
+//         chat_id: chatId,
+//         text: text
+//     })
+//     return res.send()
+// })
 
 app.get('/test', async (req, res, next) => {
     console.log('TEST IS PASSED');
