@@ -9,19 +9,13 @@ const PORT = 8010;
 
 const app = express();
 
-app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 const setupWebhook = async () => {
     const res = await axios.get(`${TG_API}/setWebhook?url=${WEBHOOK_URL}`);
     console.log(res.data);
 }
-
-app.get('/webhook-customerorder-sobrano?:id&:type', (req, res, next) => {
-    console.log(req.body);
-    console.log('WEBHOOK WITH QUERY PARAMS!!!');
-    res.end();
-})
 
 app.post('/webhook-customerorder-sobrano', (req, res, next) => {
     console.log(req.body);
