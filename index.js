@@ -6,7 +6,7 @@ const MS_TOKEN = 'c74a8a50dd71f2effeeb0760ca923825bffb5d6b'; // Ramazan
 const TG_BOT_TOKEN = '5753507047:AAEIpHf-jF4nM0o0bzuxDycWQLNQXzcwPl8'; // Bender
 const TG_API = `https://api.telegram.org/bot${TG_BOT_TOKEN}`
 const URI = `/webhook/${TG_BOT_TOKEN}`
-const WEBHOOK_URL = `https://1d26-94-180-255-226.ngrok-free.app${URI}`;
+const WEBHOOK_URL = `https://6e7e-94-180-255-226.ngrok-free.app${URI}`;
 const PORT = 8010;
 
 const $api = axios.create({
@@ -52,13 +52,13 @@ app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
 app.post(URI, async (req, res) => {
     console.log(req.body)
 
-    const chatId = req.body.message.chat.id
-    const text = req.body.message.text
+    // const chatId = req.body.message.chat.id
+    // const text = req.body.message.text
 
-    await axios.post(`${TELEGRAM_API}/sendMessage`, {
-        chat_id: chatId,
-        text: text
-    })
+    // await axios.post(`${TELEGRAM_API}/sendMessage`, {
+    //     chat_id: chatId,
+    //     text: text
+    // })
     return res.send()
 })
 
