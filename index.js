@@ -9,7 +9,7 @@ const PORT = 8010;
 
 const app = express();
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const setupWebhook = async () => {
@@ -18,12 +18,18 @@ const setupWebhook = async () => {
 }
 
 app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
-    const reqBody = req.body;
-    const id = req.params.id;
-    console.log(reqBody);
-    console.log(id);
-    console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
-    res.end();
+    try {
+        const reqBody = req.body;
+        const id = req.params.id;
+        console.log(reqBody);
+        console.log(id);
+        console.log('WEBHOOK WITHOUT QUERY PARAMS!!!');
+        res.end();
+    } catch (error) {
+        console.log(error);
+        res.end();
+    }
+
 })
 
 app.get('/test', async (req, res, next) => {
