@@ -36,7 +36,7 @@ app.post('/webhook-customerorder-sobrano', async (req, res, next) => {
         const text = `Заказ <b>${order.name}</b>\nСамовывоз\nСобран <b>${order.updated.slice(0, -4)}</b>\nЗакреплен за "${manager.value.name}"`;        
 
         await axios.post(`${TG_API}/sendMessage`, {
-            chat_id: 482738452, // Ramazan
+            chat_id: -1002083929616, // FLX_Бот_Самовывоз
             text,
             parse_mode: "HTML"
         })
