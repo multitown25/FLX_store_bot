@@ -3,7 +3,7 @@ const axios = require('axios')
 
 // вынести это в .env
 const MS_TOKEN = 'c74a8a50dd71f2effeeb0760ca923825bffb5d6b'; // Ramazan
-const TG_BOT_TOKEN = '5753507047:AAEIpHf-jF4nM0o0bzuxDycWQLNQXzcwPl8'; // Bender
+const TG_BOT_TOKEN = '6723987470:AAE1oi2KkFmwenQ3qgaWD6M7ilODWApRvnc'; // FLX_Helper_BOT
 const TG_API = `https://api.telegram.org/bot${TG_BOT_TOKEN}`
 const URI = `/webhook/${TG_BOT_TOKEN}`
 const WEBHOOK_URL = `https://2bd6-94-180-255-226.ngrok-free.app${URI}`; // screen name is ...
